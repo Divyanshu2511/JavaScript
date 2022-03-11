@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<body>
+
+  <div>
+    <ul id="category">
+      <li id="laptops">laptops</li>
+      <li id="cameras">cameras</li>
+      <li id="shoes">shoes</li>
+    </ul>
+  </div>
+
+
+  
+  
+    <div id="form">
+      <input type="text" id="name" data-lowercase>
+      <input type="text" id="pan">
+      <input type="text" id="mobile" >
+    </div>
+  
+
+
+  <script >
+      document.querySelector("#category").addEventListener('click', (e) => {
+  console.log(e);
+  if (e.target.tagName == 'LI') {
+    window.location.href = "/" + e.target.id;
+  }
+});
+
+
+document.querySelector("#form").addEventListener('keyup', (e) => {
+  console.log(e);
+  if (e.target.dataset.lowercase != undefined) {
+    e.target.value = e.target.value.toLowerCase();
+  }
+});
+
+
+
+
+  </script>
+</body>
+</html>
