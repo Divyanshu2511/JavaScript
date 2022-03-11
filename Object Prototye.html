@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Examples Of Object Prototypes</title>
+</head>
+
+<body>
+    <script>
+        // Prototype
+
+        function Mobile() {
+
+        }
+        console.log(Mobile);
+        console.log(Mobile.prototype);
+
+        var Samsung = new Mobile();
+
+
+        console.log(Samsung.__proto__);
+        console.log(Samsung.__proto__ === Mobile.prototype);
+        console.log(Mobile === Samsung.__proto__.constructor);
+        console.log(Mobile === Mobile.prototype.constructor);
+
+
+
+        // OverRiding
+
+
+        function Mobile() {
+            this.a = 20;
+        }
+
+        Mobile.prototype.a = 10;
+
+        var lg = new Mobile();
+
+        console.log(lg.a);
+
+
+        //Prototypical Properties
+
+
+        function Mobile(model,year) {
+            this.model = model,
+                this.year = year,
+                
+                this.changeModel = function (model) {
+                    this.model = model;
+                }
+        }
+
+
+        var Samsung = new Mobile('Z-Flip',2020);
+        var Apple = new Mobile('13-Pro',2021)
+        console.log(Samsung)
+        mydata.changeModel('Z-FlipPro');
+        console.log(Samsung)
+
+        Samsung.Camera = 'Present';
+        console.log(Samsung);
+        console.log(Apple.Camera);
+
+        Mobile.prototype.Camera = 'Present';
+
+        console.log(Apple.Camera);
+
+
+
+
+
+        //Prototypical Inheritance OverRiding 
+
+
+        function extend(Child, Parent) {
+            Child.prototype = Object.create(Parent.prototype);
+            Child.prototype.constructor = Child;
+        }
+
+        var Mobile = function () {
+
+        }
+        Mobile.prototype.show = function () {
+            return "Parent Class Method";
+        }
+        var Samsung = function () {
+
+        }
+        extend(Samsung, Mobile);
+
+        Samsung.prototype.show = function () {
+            return "Sub Class Method";
+        }
+        var sam = new Samsung();
+        document.write(sam.show());
+
+
+
+
+        // MultiLevel Inheritence
+
+
+
+        var Mobile = function () {
+            this.a = 10;
+        }
+
+        Mobile.prototype.z = 30;
+
+
+        var Samsung = function () {
+            Mobile.call(this);
+            this.b = 20;
+        }
+
+        var Galaxy = function () {
+            Samsung.call(this);
+            this.c = 100;
+        }
+
+        Samsung.prototype = Object.create(Mobile.prototype);
+        Samsung.prototype.constructor = Samsung;
+
+        Galaxy.prototype = Object.create(Samsung.prototype);
+        Galaxy.prototype.constructor = Galaxy;
+
+        var m = new Mobile();
+        var s = new Samsung();
+        var g = new Galaxy();
+
+        document.write("Galaxy Object can access <br>")
+        document.write("Mobile A: " + g.a + "<br>");
+        document.write("Samsung B: " + g.b + "<br> ");
+        document.write("Mobile Prototype Z: " + g.z + "<br>");
+        document.write("Galaxy C: " + g.c + "<br> <br>");
+
+        document.write("Samsung Object can access <br>");
+        document.write("Mobile A: " + s.a + "<br>");
+        document.write("Samsung B: " + s.b + "<br> ");
+        document.write("Mobile Prototype Z: " + s.z + "<br>");
+        document.write("Galaxy C: " + s.c + "<br><br>");
+
+        document.write("Mobile Object can access <br>");
+        document.write("Mobile A: " + m.a + "<br>");
+        document.write("Samsung B: " + m.b + "<br> ");
+        document.write("Mobile Prototype Z: " + m.z + "<br>");
+        document.write("Galaxy C: " + m.c + "<br><br>");
+
+
+
+
+        ///
+
+        var Mobile = function (name) {
+            this.a = 10,
+            
+        toString = function NameToString() {
+         return `${this.name}` ;
+        }
+        }
+
+        Mobile.prototype.z = 30;
+
+
+        var Samsung = function (name) {
+            Mobile.call(this);
+            this.b = 20,
+           toString = function  NameToString() {
+         return `${this.name}`;
+           }
+        }
+
+        var Galaxy = function (name) {
+            Samsung.call(this);
+            this.c = 100,
+            toString = function  NameToString() {
+         return `${this.name}`;
+            }
+        }
+
+        Samsung.prototype = Object.create(Mobile.prototype);
+        Samsung.prototype.constructor = Samsung;
+
+        Galaxy.prototype = Object.create(Samsung.prototype);
+        Galaxy.prototype.constructor = Galaxy;
+
+        var m = new Mobile('Mobile');
+        var s = new Samsung('Samsung');
+        var g = new Galaxy('Galaxy');
+
+        document.write("Galaxy Object can access <br>")
+        document.write("Mobile A: " + g.a + "<br>");
+        document.write("Samsung B: " + g.b + "<br> ");
+            document.write("Samsung B: " + g.NameToString() + "<br> ");
+        document.write("Mobile Prototype Z: " + g.z + "<br>");
+        document.write("Galaxy C: " + g.c + "<br> <br>");
+
+
+        document.write("Samsung Object can access <br>");
+        document.write("Mobile A: " + s.a + "<br>");
+        document.write("Samsung B: " + s.b + "<br> ");
+            document.write("Samsung B: " + s.NameToString() + "<br> ");
+        document.write("Mobile Prototype Z: " + s.z + "<br>");
+        document.write("Galaxy C: " + s.c + "<br><br>");
+
+        document.write("Mobile Object can access <br>");
+        document.write("Mobile A: " + m.a + "<br>");
+        document.write("Samsung B: " + m.b + "<br> ");
+            document.write("Samsung B: " + m.NameToString() + "<br> ");
+        document.write("Mobile Prototype Z: " + m.z + "<br>");
+            
+        document.write("Galaxy C: " + m.c + "<br><br>");
+
+      
+
+
+    </script>
+</body>
+
+</html>
