@@ -1,0 +1,216 @@
+<html>
+
+
+<script>
+
+    //creating Class
+class Employee  
+  {  
+    constructor(id,name)  
+    {  
+      this.id=id;  
+      this.name=name;  
+    }   
+    detail()  
+    {  
+  document.write(this.id+" "+this.name+"<br>")  
+    }  
+  }  
+var e1=new Employee(1,"Divyanshu Mittal");  
+var e2=new Employee(2,"Prem Sai");  
+e1.detail();
+e2.detail();  
+
+//polymorphism 
+//OverRiding
+class Company  
+  {  
+    constructor(name)  
+    {  
+      
+      this.name=name;  
+    }   
+    detail()  
+    {  
+  document.write(this.name+" " + 'from Team ACS')  
+    }  
+  } 
+  
+class Depart extends Company{
+    detail()  
+    {  
+  document.write(this.name+" " + 'from ACS JavaScript Team')  
+    }  
+
+}  
+let e3=new Depart("Divyanshu Mittal");  
+
+e3.detail();
+
+
+//Encapsulation
+
+class Student  
+  {  
+    constructor()  
+    {  
+       var name;  
+       var marks;  
+    }  
+        getName()  
+        {  
+          return this.name;  
+        }  
+      setName(name)  
+      {  
+        this.name=name;  
+      }  
+        
+      getMarks()  
+      {  
+        return this.marks;  
+      }  
+    setMarks(marks)  
+    {  
+      this.marks=marks;  
+    }  
+    }  
+    var stud=new Student();  
+     stud.setName("Divyanshu");  
+     stud.setMarks(89);  
+     document.writeln(stud.getName()+" "+stud.getMarks());  
+
+
+
+
+//Inheritence
+
+
+class A {
+constructor(name){
+this.name =name;
+}
+
+toString(){
+return (`Name: ${this.name}`);
+}
+
+}
+class B extends A {
+constructor(name , id){
+super(name);
+this.id =id;
+}
+toString(){
+return (`${super.toString() }, Id :${this.id}`);
+}
+}
+
+
+let A1 = new B('Divyanshu',21);
+console.log(A1.toString());
+
+
+
+
+
+//Multilevel Inheritance
+//
+
+
+
+class A {
+constructor(name){
+this.name =name;
+}
+
+toString(){
+return (`Name: ${this.name}`);
+}
+
+}
+class B extends A {
+constructor(name , id){
+super(name);
+this.id =id;
+}
+toString(){
+return (`${super.toString() }, Id :${this.id}`);
+}
+}
+
+class C extends B {
+
+constructor(name , id , roll){
+super(name);
+super(id);
+this.roll =roll;
+}
+toString(){
+return (`${super.toString() }, Id :${this.id} ,  Roll :${this.roll}`);
+}
+}
+
+
+let A1 = new B('Divyanshu',21 , 53);
+console.log(A1.toString());
+
+
+// Hierarical Inheritence 
+
+class A {
+constructor(name){
+this.name =name;
+}
+toString(){
+return (`Name: ${this.name}`);
+}
+}
+class B extends A {
+constructor(name , id){
+super(name);
+this.id =id;
+}
+toString(){
+return (`${super.toString() }, Id :${this.id}`);
+}
+}
+class C extends A {
+constructor(name , id , roll){
+super(name);
+super(id);
+this.roll =roll;
+}
+toString(){
+return (`${super.toString() },   Roll :${this.roll}`);
+}
+}
+let A1 = new B('Divyanshu',21);
+console.log(A1.toString());
+
+
+// Abstraction 
+
+
+function person(fname,lname){
+    let firstname = fname;
+    let lastname = lname;
+ 
+    let noaccess = function(){
+        return (`First name is: ${firstname} Last
+            name is: ${lastname}`);
+    }
+ 
+    this.access = function(){
+        return (`First name : ${firstname}, Last
+            name : ${lastname}`);
+    }
+}
+let person1 = new person('Divyanshu','Mittal');
+console.log(person1.firstname);
+console.log(person1.noaccess);
+console.log(person1.access());
+
+</script>  
+
+</html>
