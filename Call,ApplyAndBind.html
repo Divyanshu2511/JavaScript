@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<body>
+
+    <script>
+let name = {
+    first : "Divyanshu",
+    last : "Mittal",
+}
+
+let fullname =  function(city){
+    console.log(this.first + " " + this.last + " from " + city);
+}
+
+fullname.call(name,"Aligarh");
+
+let name2 = {
+    firstname : "Honey",
+    lastname : "Singh"
+}
+
+fullname.call(name2, "Delhi"); 
+
+let name2 = {
+    firstname : "Honey",
+    lastname : "Singh"
+}
+
+
+let fullname1 =  function(city ,resident){
+    console.log(this.first + " " + this.last + " from " + city + resident);
+}
+
+fullname1.apply(name2,["Delhi","India"]); 
+
+
+let abc = fullname.bind(name, "Aligarh");
+abc();
+
+
+
+    </script>
+</body>
