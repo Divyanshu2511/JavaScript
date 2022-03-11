@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<body>
+</body>
+
+
+
+<script>
+//Hoisting
+    console.log(a);
+    abc();
+    console.log(abc);
+    ab();
+    console.log(ab);
+
+    var a = 7;
+
+    function abc() {
+        console.log('HY');
+
+    }
+
+    const ab = () => {
+        console.log('HYyy');
+    }
+
+
+//Memoization
+
+    function createSquare() {
+        const map = new Map;
+
+        return function (n) {
+            if (!map.has(n)) {
+
+                console.log('Calculating ' + n)
+                const result = n * n;
+
+                map.set(n, result);
+                return result;
+
+            }
+            return map.get(n);
+        }
+    }
+    const square = createSquare();
+
+    console.log(square(4))
+
+
+
+    const memoizer = () => {
+        let memory = {};
+        return (a) => {
+            if (a in cache) {
+                console.log('from memory');
+                return memory[n];
+            } else {
+                console.log('now calculating');
+                let results = a * a;
+                memory[a] = results;
+                return results;
+            }
+        }
+    }
+
+    const square = memoizer();
+
+    console.log(square(9));
+
+
+    console.time("First call");
+    console.log(clumsysquare(9467));
+    console.timeEnd("First call");
+
+    console.time("Second call");
+    console.log(clumsysquare(9467));
+    console.timeEnd("Second call");
+
+
+</script>
+</body>
+
+</html>
