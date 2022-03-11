@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <title> JS Events</title>
+
+</head>
+<body>
+<div onclick="myObj(this)"> 
+    <h1>
+        Hello
+    </h1>
+    <h2>
+        Heyyy
+    </h2>
+    </div>
+    <div>
+    <button id="btn">Click</button>
+</div>
+
+
+<a onmouseOver ="myObj(this)"> hyy </a>
+
+
+<div>
+<p id="red">red</p>
+<p id="yellow">yellow</p>
+<button type="button" onclick="myFunction()">Set text color</button>
+</div>
+</body>
+
+
+<script>
+
+
+let btn = document.querySelector('#btn');
+btn.addEventListener('click',function(event) {
+    alert(event.type);
+});
+
+btn.addEventListener('click',function(event) {
+    alert('Clicked!');
+});
+
+btn.addEventListener('click', function(event) {
+    console.log('The button was clicked!');
+    event.stopPropagation();
+});
+
+document.body.addEventListener('click',function(event) {
+    console.log('The body was clicked!');
+});
+
+function myObj(b){
+    var a=document.querySelector('a');
+     a.style.color = 'green';
+    a.innerText = 'HYYYY';
+}
+
+
+
+
+function myFunction() {
+
+document.getElementById("red").style.color = "red";
+document.getElementById("yellow").style.color = "yellow";
+}
+
+</script>
+
+</body>
+</html>
