@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<body>
+<script>
+
+
+let cars = [
+  {
+    "color": "purple",
+    "type": "minivan",
+    "registration": new Date('2022-02-28'),
+    "capacity": 7
+  },
+  {
+    "color": "red",
+    "type": "wagnor",
+    "registration": new Date('2022-03-01'),
+    "capacity": 4
+  },
+
+  {
+    "color": "green",
+    "type": "Suv ",
+    "registration": new Date('2022-03-03'),
+    "capacity": 5
+  }
+
+]
+
+let car = {
+  "color": "red",
+  "type": "Mini Suv",
+  "registration": new Date('2016-05-02'),
+  "capacity": 2
+}
+
+cars.unshift(car);
+cars.shift();  //reoves from starting
+cars.pop();
+
+cars.splice(1, 0, car);
+
+let car = cars.find(car => car.color === "red");
+
+let redCars = cars.filter(car => car.color === "red");
+console.log(redCars);
+
+
+let sizes = cars.map(car => {
+  if (car.capacity <= 3){
+    return "small";
+  }
+  if (car.capacity <= 5){
+    return "medium";
+  }
+  return "large";
+});
+console.log(sizes);
+
+
+
+
+let carsProperties = cars.map(car => {
+ let properties = {
+   "capacity": car.capacity,
+   "size": "large"
+ };
+ if (car.capacity <= 5){
+   properties['size'] = "medium";
+ }
+ if (car.capacity <= 3){
+   properties['size'] = "small";
+ }
+ return properties;
+});
+console.log(carsProperties);
+
+
+cars.forEach(car => {
+ car['size'] = "large";
+ if (car.capacity <= 5){
+   car['size'] = "medium";
+ }
+ if (car.capacity <= 3){
+   car['size'] = "small";
+ }
+});
+
+let sortedCars = cars.sort((c1, c2) => (c1.capacity < c2.capacity) ? 1 : (c1.capacity > c2.capacity) ? -1 : 0);
+console.log(sortedCars);
+
+
+cars.some(car => car.color === "green" && car.type === "Suv");
+
+cars.every(car => car.capacity >= 4);
+
+var l =console.log;
+l(cars)
+
+
+</script>
+    
+</body>
